@@ -1,0 +1,35 @@
+name: python-and-pytest
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install pytest
+        run: |
+          pip install pytest
+
+      - name: Run program and tests (README way)
+        run: |
+          cd python
+
+          # Run program
+          python maths/fibonacci.py 30
+
+          # Run tests and generate XML report
+          py.test --junit-xml=report.xml
+
+          # View report
+          cat report.xml
