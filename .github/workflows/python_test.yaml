@@ -33,3 +33,9 @@ jobs:
 
           # View report
           cat report.xml
+          
+      - name: Upload test report
+        uses: actions/upload-artifact@v4
+        with:
+          name: pytest-report
+          path: python/report.xml
