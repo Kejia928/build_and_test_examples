@@ -124,11 +124,8 @@ jobs:
       # Build and run (README Usage)
       # -------------------------
       - name: Compile and run
-        env:
-          CPLUS_INCLUDE_PATH: $HOME/include
-          LIBRARY_PATH: $HOME/lib
-          LD_LIBRARY_PATH: $HOME/lib
         run: |
+          cd cpp
           make fibonacci
           ./fibonacci 30
           make test
