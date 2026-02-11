@@ -96,6 +96,9 @@ jobs:
           ./configure --prefix=$HOME
           make
           make install
+          export CPLUS_INCLUDE_PATH=$HOME/include:$CPLUS_INCLUDE_PATH
+          export LIBRARY_PATH=$HOME/lib:$LIBRARY_PATH
+          export LD_LIBRARY_PATH=$HOME/lib:$LD_LIBRARY_PATH
 
       # -------------------------
       # Install googletest (README way)
@@ -113,6 +116,9 @@ jobs:
           cp -r ../include/gtest/ $HOME/include/
           mkdir -p $HOME/lib
           cp libgtest*a $HOME/lib/
+          export CPLUS_INCLUDE_PATH=$HOME/include:$CPLUS_INCLUDE_PATH
+          export LIBRARY_PATH=$HOME/lib:$LIBRARY_PATH
+          export LD_LIBRARY_PATH=$HOME/lib:$LD_LIBRARY_PATH
 
       # -------------------------
       # Build and run (README Usage)
@@ -123,7 +129,6 @@ jobs:
           LIBRARY_PATH: $HOME/lib
           LD_LIBRARY_PATH: $HOME/lib
         run: |
-          cd cpp
           make fibonacci
           ./fibonacci 30
           make test
